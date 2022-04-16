@@ -14,14 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/registrarEstudiante', [EstudianteController::class,'vistaRegistrarEstudiante'])->name('estudianteIndex');
+Route::get('/home', [EstudianteController::class,'vistaRegistrarEstudiante'])->name('estudianteIndex');
 
 Route::post('/registrarEstudiante', [EstudianteController::class,'registrarEstudiante'])->name('estudianteStorage');
 
-Route::get('/mostrarEstudiante', [EstudianteController::class,'mostrarEstudiante'])->name('estudianteList');
+Route::get('/listarEstudiantes', [EstudianteController::class,'listarEstudiantes'])->name('estudianteList');

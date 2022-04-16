@@ -15,7 +15,7 @@
         @csrf
 
         <div class="form-group form-registro">
-            <label>Matricula</label>
+            <label>Matrícula</label>
             <input type="text" class="form-control  $errors->has('matricula') ? 'error' : '' " name="matricula" id="matricula">
             
             <!-- Error -->
