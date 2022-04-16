@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class EstudianteController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
 
     //GET
@@ -44,14 +44,8 @@ class EstudianteController extends Controller
         //return $nuevoEstudiante;
     }
 
-    public function mostrarEstudiante(Request $request){
-        $listaEstudiante = [];
-        $buscarEstudiante = $request->input('busqueda');
-        if($buscarEstudiante){
-            $listaEstudiante = Estudiante::query()->where('matricula', 'LIKE', "%{$buscarEstudiante}%")->get();
-        }else{
-            $listaEstudiante = Estudiante::all();
-        }
-        return view('estudiante.mostrar_estudiante', compact('estudiantes'));
+    public function listarEstudiantes(Request $request){
+        $estudiantes = Estudiante::all();
+        return view('estudiantes.listarEstudiantes', compact('estudiantes'));
     }
 }
