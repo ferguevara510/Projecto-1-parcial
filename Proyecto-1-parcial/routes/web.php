@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/registrarEstudiante', [EstudianteController::class,'vistaRegistrarEstudiante'])->name('estudianteIndex');
+
+Route::post('/registrarEstudiante', [EstudianteController::class,'registrarEstudiante'])->name('estudianteStorage');
+
+Route::get('/mostrarEstudiante', [EstudianteController::class,'mostrarEstudiante'])->name('estudianteList');
