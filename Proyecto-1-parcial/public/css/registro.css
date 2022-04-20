@@ -4,7 +4,7 @@
 
 .form-registro select,
 .form-registro input{
-    border: 2px solid #e0a2eb;
+    border: 2px solid #02eeaf;
     border-radius: 20px;
     min-width: 555px;
     min-height: 35px;
@@ -13,8 +13,8 @@
 }
 
 .btn-submit{
-    background-color: #674ec7;
-    color: white;
+    background-color: #02b6ee;
+    color: black;
     border-radius: 15px;
     padding: 5px 15px 5px 15px;
     width: auto;

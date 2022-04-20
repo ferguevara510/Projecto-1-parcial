@@ -40,7 +40,7 @@ class EstudianteController extends Controller
         ]);
 
         Estudiante::create($nuevoEstudiante);
-        return back()->with('success', 'Su estudiante ha sido creado con exito');
+        return back()->with('success', 'Estudiante registrado correctamente');
         //return $nuevoEstudiante;
     }
 
@@ -82,7 +82,7 @@ class EstudianteController extends Controller
 
         $estudiante->update();
 
-        return redirect()->route('estudianteList')->with('success', 'Cliente modificado');
+        return redirect()->route('estudianteList')->with('success', 'Estudiante modificado correctamente');
     }
 
     public function vistaEditarEstudiante(Estudiante $estudiante){
@@ -102,6 +102,6 @@ class EstudianteController extends Controller
 
     public function eliminarEstudiante (Estudiante $estudiante){
         $estudiante->delete();
-        return redirect()->route('estudianteList')->with('success', 'Cliente eliminado');
+        return redirect()->route('estudianteList')->with('success', 'Estudiante eliminado correctamente');
     }
 }
