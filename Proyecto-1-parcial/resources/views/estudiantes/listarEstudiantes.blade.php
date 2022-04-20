@@ -1,20 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-
 <link href="{{ asset('/css/consultar.css') }}" rel="stylesheet">
-<div class="titulo-lista">
-    <div>
-        <a href="{{route('estudianteIndex')}}">
-            <button class="btn-primary">Registrar Estudiante</button> 
-        </a>
+@if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
     </div>
-    <div><h1>Lista de Estudiantes</h1>
-    </div>
-    <div></div>
-    
-</div>
+@endif
 
+<div class="line-search">
+    <section>
+        <form method="get" action="{{ route('estudianteList') }}">
+            <input class="line-search-input" type="search" name="busqueda" placeholder="Nombre estudiante">
+            <button class="btn-opcion-buscar" type="submit">Buscar</button>
+        </form>
+    </section>
+</div>
+<div class="btn-registrar">
+    <button type="button" id="registrarCliente" class="btn-opcion"><a class="texto-link" href="{{ route('estudianteRoot') }}">Registrar</a></button>
+</div>
 
 <div class="contenedor-tarjetas">
     @foreach ($estudiantes as $estudiante)
@@ -71,6 +75,18 @@
                 <div>
                     <strong>Ciudad: </strong>
                     <span>{{$estudiante->ciudad}}</span>
+                </div>
+                <div>
+                    <div class="btn-tarjetas">
+                        <button type="button" id="modificarCliente" class="btn-opcion"><a class="texto-link" href="{{ route('estudianteEdit', $estudiante->id) }}">Modificar</a></button>
+                        <div>
+                            <form method="post" action="{{ route('estudianteDelete', $estudiante->id) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" id="eliminarCliente" class="btn-opcion btn-opcion-color">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

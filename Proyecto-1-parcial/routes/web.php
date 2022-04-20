@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [EstudianteController::class,'vistaRegistrarEstudiante'])->name('estudianteIndex');
+Route::get('/home', [EstudianteController::class,'listarEstudiantes'])->name('estudianteIndex');
+Route::get('/registrarEstudiante', [EstudianteController::class,'vistaRegistrarEstudiante'])->name('estudianteRoot');
 
 Route::post('/registrarEstudiante', [EstudianteController::class,'registrarEstudiante'])->name('estudianteStorage');
 
-Route::get('/listarEstudiantes', [EstudianteController::class,'listarEstudiantes'])->name('estudianteList');
+Route::get('/', [EstudianteController::class,'listarEstudiantes'])->name('estudianteList');
+
+Route::get('/editarEstudiante/{estudiante}', [EstudianteController::class,'vistaEditarEstudiante'])->name('estudianteEdit');
+
+Route::put('/editarEstudiante/{estudiante}', [EstudianteController::class,'editarEstudiante'])->name('estudianteUpdate');
+
+Route::delete('/borrarEstudiante/{estudiante}', [EstudianteController::class,'eliminarEstudiante'])->name('estudianteDelete');
